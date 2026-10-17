@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+coverage/
+.next/
+.turbo/
+*.log
+.env
+.env.local
+.DS_Store
+apps/phase-01-cli-todo/data/
+*.tsbuildinfo

@@ -1,0 +1,15 @@
+{
+  "name": "backend-journey",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:phase-01": "pnpm --filter @backend-journey/phase-01-cli-todo dev",
+    "cli:phase-01": "pnpm --filter @backend-journey/phase-01-cli-todo cli",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint --if-present",
+    "test": "pnpm -r run test --if-present"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
