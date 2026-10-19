@@ -16,7 +16,7 @@ This repository is built **one phase at a time** — each phase is implemented, 
 |---|---|---|
 | 0 Scaffold + docs | Done | `docs/` |
 | 1 Foundations (CLI + raw HTTP) | Done | [`apps/phase-01-cli-todo`](apps/phase-01-cli-todo) |
-| 2 REST + Express | Upcoming | `apps/phase-02-taskboard-api` |
+| 2 REST + Express | Done | [`apps/phase-02-taskboard-api`](apps/phase-02-taskboard-api) |
 | 3 Databases + SQL | Upcoming | `apps/phase-03-notes-api` |
 | 4 Auth + Next.js UI | Upcoming | `phase-04-secure-notes-*` |
 | 5 Cache, tests, logs | Upcoming | `phase-05-cached-feed-*` |
@@ -26,22 +26,27 @@ This repository is built **one phase at a time** — each phase is implemented, 
 
 Track details in [docs/PROGRESS.md](docs/PROGRESS.md). Full path: [docs/ROADMAP.md](docs/ROADMAP.md).
 
-## Quick start (Phase 1)
+## Quick start
 
 Prerequisites: **Node.js 22+** and **pnpm 9+**.
+
+### Phase 1 — CLI + raw HTTP (port 3001)
 
 ```bash
 pnpm install
 pnpm cli:phase-01 add "Learn Node event loop"
 pnpm cli:phase-01 list
 pnpm dev:phase-01
+# curl http://localhost:3001/todos
 ```
 
-In another terminal:
+### Phase 2 — TaskBoard Express API (port 3002)
 
 ```bash
-curl http://localhost:3001/health
-curl http://localhost:3001/todos
+pnpm install
+pnpm dev:phase-02
+# curl http://localhost:3002/health
+# curl -X POST http://localhost:3002/tasks -H 'Content-Type: application/json' -d '{"title":"Learn Express"}'
 ```
 
 ## Monorepo layout

@@ -17,9 +17,10 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Phase 2 — REST & Express
 
-- [ ] TaskBoard in-memory API
-- [ ] Zod validation + error middleware
-- [ ] Documented routes / curl or Swagger
+- [x] TaskBoard in-memory API
+- [x] Zod validation + error middleware
+- [x] Documented routes / curl examples
+- [ ] You personally ran the curl examples and understand the middleware chain
 
 ## Phase 3 — Databases & SQL
 

@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  phase-01:
+  typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,3 +19,5 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm --filter @backend-journey/phase-01-cli-todo typecheck
+      - run: pnpm --filter @backend-journey/phase-02-taskboard-api typecheck
+
