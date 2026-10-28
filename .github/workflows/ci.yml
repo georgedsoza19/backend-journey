@@ -20,4 +20,6 @@ jobs:
       - run: pnpm install
       - run: pnpm --filter @backend-journey/phase-01-cli-todo typecheck
       - run: pnpm --filter @backend-journey/phase-02-taskboard-api typecheck
+      - run: pnpm --filter @backend-journey/phase-03-notes-api db:generate
+      - run: pnpm --filter @backend-journey/phase-03-notes-api typecheck
 

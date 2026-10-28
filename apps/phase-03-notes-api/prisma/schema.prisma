@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  notes     Note[]
+
+  @@map("users")
+}
+
+model Note {
+  id        String     @id @default(uuid())
+  title     String
+  body      String
+  authorId  String     @map("author_id")
+  author    User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  tags      NoteTag[]
+
+  @@index([authorId])
+  @@index([title])
+  @@map("notes")
+}
+
+model Tag {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  notes     NoteTag[]
+
+  @@map("tags")
+}
+
+/// Join table for Note <-> Tag (N:M)
+model NoteTag {
+  noteId String @map("note_id")
+  tagId  String @map("tag_id")
+  note   Note   @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([noteId, tagId])
+  @@map("note_tags")
+}

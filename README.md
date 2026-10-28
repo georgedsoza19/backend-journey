@@ -17,7 +17,7 @@ This repository is built **one phase at a time** — each phase is implemented, 
 | 0 Scaffold + docs | Done | `docs/` |
 | 1 Foundations (CLI + raw HTTP) | Done | [`apps/phase-01-cli-todo`](apps/phase-01-cli-todo) |
 | 2 REST + Express | Done | [`apps/phase-02-taskboard-api`](apps/phase-02-taskboard-api) |
-| 3 Databases + SQL | Upcoming | `apps/phase-03-notes-api` |
+| 3 Databases + SQL | Done | [`apps/phase-03-notes-api`](apps/phase-03-notes-api) |
 | 4 Auth + Next.js UI | Upcoming | `phase-04-secure-notes-*` |
 | 5 Cache, tests, logs | Upcoming | `phase-05-cached-feed-*` |
 | 6 Docker / CI / deploy | Upcoming | tooling |
@@ -47,6 +47,18 @@ pnpm install
 pnpm dev:phase-02
 # curl http://localhost:3002/health
 # curl -X POST http://localhost:3002/tasks -H 'Content-Type: application/json' -d '{"title":"Learn Express"}'
+```
+
+### Phase 3 — Notes API + Postgres (port 3003)
+
+```bash
+docker compose up -d postgres   # host port 5433
+pnpm install
+cp apps/phase-03-notes-api/.env.example apps/phase-03-notes-api/.env
+pnpm --filter @backend-journey/phase-03-notes-api db:migrate:deploy
+pnpm db:seed:phase-03
+pnpm dev:phase-03
+# curl "http://localhost:3003/notes?q=prisma"
 ```
 
 ## Monorepo layout

@@ -25,7 +25,8 @@ This separation is intentional: you practice real backend skills (CORS, tokens, 
 |---|---|
 | Phase 1 HTTP | 3001 |
 | Phase 2 TaskBoard API | 3002 |
-| Phase 3+ APIs | 3003+ (documented per app) |
+| Phase 3 Notes API | 3003 |
+| Phase 4+ APIs | 3004+ (documented per app) |
 | Next.js web apps | 3000 |
-| PostgreSQL | 5432 |
+| PostgreSQL (Compose → host) | 5433 → 5432 in container |
 | Redis | 6379 |

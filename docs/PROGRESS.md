@@ -24,9 +24,10 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Phase 3 — Databases & SQL
 
-- [ ] Notes API with Prisma + PostgreSQL
-- [ ] Migrations + seed
-- [ ] `.env.example` documented
+- [x] Notes API with Prisma + PostgreSQL
+- [x] Migrations + seed
+- [x] `.env.example` documented
+- [ ] You personally queried notes with `?q=` / `?tag=` and opened Prisma Studio
 
 ## Phase 4 — Auth & first Next.js UI
 

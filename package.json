@@ -6,6 +6,9 @@
     "dev:phase-01": "pnpm --filter @backend-journey/phase-01-cli-todo dev",
     "cli:phase-01": "pnpm --filter @backend-journey/phase-01-cli-todo cli",
     "dev:phase-02": "pnpm --filter @backend-journey/phase-02-taskboard-api dev",
+    "dev:phase-03": "pnpm --filter @backend-journey/phase-03-notes-api dev",
+    "db:migrate:phase-03": "pnpm --filter @backend-journey/phase-03-notes-api db:migrate",
+    "db:seed:phase-03": "pnpm --filter @backend-journey/phase-03-notes-api db:seed",
     "build": "pnpm -r run build",
     "lint": "pnpm -r run lint --if-present",
     "test": "pnpm -r run test --if-present"
