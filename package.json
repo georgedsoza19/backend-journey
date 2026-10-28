@@ -13,6 +13,11 @@
     "dev:phase-04-web": "pnpm --filter @backend-journey/phase-04-secure-notes-web dev",
     "db:migrate:phase-04": "pnpm --filter @backend-journey/phase-04-secure-notes-api db:migrate",
     "db:seed:phase-04": "pnpm --filter @backend-journey/phase-04-secure-notes-api db:seed",
+    "dev:phase-05-api": "pnpm --filter @backend-journey/phase-05-cached-feed-api dev",
+    "dev:phase-05-web": "pnpm --filter @backend-journey/phase-05-cached-feed-web dev",
+    "db:migrate:phase-05": "pnpm --filter @backend-journey/phase-05-cached-feed-api db:migrate",
+    "db:seed:phase-05": "pnpm --filter @backend-journey/phase-05-cached-feed-api db:seed",
+    "test:phase-05": "pnpm --filter @backend-journey/phase-05-cached-feed-api test",
     "build": "pnpm -r run build",
     "lint": "pnpm -r run lint --if-present",
     "test": "pnpm -r run test --if-present"

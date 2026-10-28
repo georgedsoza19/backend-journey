@@ -25,4 +25,53 @@ jobs:
       - run: pnpm --filter @backend-journey/phase-04-secure-notes-api db:generate
       - run: pnpm --filter @backend-journey/phase-04-secure-notes-api typecheck
       - run: pnpm --filter @backend-journey/phase-04-secure-notes-web typecheck
+      - run: pnpm --filter @backend-journey/phase-05-cached-feed-api db:generate
+      - run: pnpm --filter @backend-journey/phase-05-cached-feed-api typecheck
+      - run: pnpm --filter @backend-journey/phase-05-cached-feed-web typecheck
 
+  phase-05-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: cached_feed
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/cached_feed?schema=public
+      REDIS_URL: redis://localhost:6379
+      JWT_ACCESS_SECRET: ci-access-secret-min-32-characters!!
+      JWT_REFRESH_SECRET: ci-refresh-secret-min-32-characters!
+      NODE_ENV: test
+      LOG_LEVEL: silent
+      FEED_CACHE_TTL_SECONDS: "60"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm --filter @backend-journey/phase-05-cached-feed-api db:generate
+      - run: pnpm --filter @backend-journey/phase-05-cached-feed-api db:migrate:deploy
+      - run: pnpm --filter @backend-journey/phase-05-cached-feed-api test

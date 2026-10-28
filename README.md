@@ -19,7 +19,7 @@ This repository is built **one phase at a time** — each phase is implemented, 
 | 2 REST + Express | Done | [`apps/phase-02-taskboard-api`](apps/phase-02-taskboard-api) |
 | 3 Databases + SQL | Done | [`apps/phase-03-notes-api`](apps/phase-03-notes-api) |
 | 4 Auth + Next.js UI | Done | [`phase-04-secure-notes-api`](apps/phase-04-secure-notes-api) + [`web`](apps/phase-04-secure-notes-web) |
-| 5 Cache, tests, logs | Upcoming | `phase-05-cached-feed-*` |
+| 5 Cache, tests, logs | Done | [`phase-05-cached-feed-api`](apps/phase-05-cached-feed-api) + [`web`](apps/phase-05-cached-feed-web) |
 | 6 Docker / CI / deploy | Upcoming | tooling |
 | 7 System design | Upcoming | `docs/phases/` |
 | Capstone ForgeBoard | Upcoming | `forgeboard-*` |
@@ -73,6 +73,21 @@ pnpm dev:phase-04-api
 # other terminal:
 pnpm dev:phase-04-web
 # open http://localhost:3000  (alice@example.com / Password123!)
+```
+
+### Phase 5 — Cached Feed API + Web (ports 3005 / 3000)
+
+```bash
+docker compose up -d postgres redis
+docker compose exec postgres psql -U postgres -c "CREATE DATABASE cached_feed;" # once
+cp apps/phase-05-cached-feed-api/.env.example apps/phase-05-cached-feed-api/.env
+pnpm --filter @backend-journey/phase-05-cached-feed-api db:migrate:deploy
+pnpm db:seed:phase-05
+pnpm test:phase-05
+pnpm dev:phase-05-api
+# other terminal:
+pnpm dev:phase-05-web
+# open http://localhost:3000 — refresh twice to see cache HIT
 ```
 
 ## Monorepo layout

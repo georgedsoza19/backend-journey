@@ -28,6 +28,8 @@ This separation is intentional: you practice real backend skills (CORS, tokens, 
 | Phase 3 Notes API | 3003 |
 | Phase 4 Secure Notes API | 3004 |
 | Phase 4 Secure Notes Web | 3000 |
-| Phase 5+ APIs | 3005+ (documented per app) |
+| Phase 5 Cached Feed API | 3005 |
+| Phase 5 Cached Feed Web | 3000 (same port as other web apps — run one at a time) |
+| Phase 6+ | documented per app |
 | PostgreSQL (Compose → host) | 5433 → 5432 in container |
 | Redis | 6379 |

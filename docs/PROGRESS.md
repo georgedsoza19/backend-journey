@@ -37,9 +37,10 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Phase 5 — Testing, logging, caching
 
-- [ ] Cached feed API with Redis
-- [ ] Integration tests + structured logs
-- [ ] Matching web UI
+- [x] Cached feed API with Redis
+- [x] Integration tests + structured logs
+- [x] Matching web UI
+- [ ] You personally observed X-Cache HIT/MISS and ran the Vitest suite
 
 ## Phase 6 — Docker, CI/CD, deploy
 

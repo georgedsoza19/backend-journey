@@ -1,3 +1,11 @@
-# phase-05-cached-feed-web
+# Phase 5 — Cached Feed Web
 
-Placeholder — implemented in a later phase. See [docs/ROADMAP.md](../../docs/ROADMAP.md) and [docs/PROGRESS.md](../../docs/PROGRESS.md).
+Next.js App Router UI:
+
+- `/` — public feed (shows cache HIT/MISS)
+- `/studio` — login + create/publish posts (invalidates Redis cache)
+
+```bash
+pnpm dev:phase-05-api   # :3005
+pnpm dev:phase-05-web   # :3000
+```
