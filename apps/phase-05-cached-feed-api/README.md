@@ -43,3 +43,18 @@ pnpm --filter @backend-journey/phase-05-cached-feed-api test
 ```
 
 Requires Postgres (`cached_feed`) + Redis running with values from `.env`.
+
+## Docker (Phase 6)
+
+From monorepo root:
+
+```bash
+pnpm docker:feed:up
+curl http://localhost:3005/ready
+```
+
+- Liveness: `GET /health`
+- Readiness: `GET /ready` (Postgres + Redis)
+- Image entrypoint runs `prisma migrate deploy` then `node dist/server.js`
+
+See [docs/DEPLOY.md](../../docs/DEPLOY.md).

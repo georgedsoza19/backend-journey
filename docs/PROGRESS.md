@@ -44,9 +44,10 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Phase 6 — Docker, CI/CD, deploy
 
-- [ ] Dockerfiles / Compose for apps that need them
-- [ ] GitHub Actions CI green
-- [ ] Staging deploy documented
+- [x] Dockerfiles / Compose for Cached Feed API (`feed` profile)
+- [x] GitHub Actions: typecheck + Phase 5 tests + Docker image build
+- [x] Staging deploy documented (`docs/DEPLOY.md`)
+- [ ] You personally ran `docker compose --profile feed up --build` and/or deployed to a PaaS
 
 ## Phase 7 — System design
 

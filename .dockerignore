@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/.next
+**/.turbo
+**/.git
+**/coverage
+**/.env
+**/.env.local
+**/src/generated
+**/*.log
+**/.DS_Store
+apps/*/data
+agent-transcripts

@@ -30,6 +30,12 @@ This separation is intentional: you practice real backend skills (CORS, tokens, 
 | Phase 4 Secure Notes Web | 3000 |
 | Phase 5 Cached Feed API | 3005 |
 | Phase 5 Cached Feed Web | 3000 (same port as other web apps — run one at a time) |
-| Phase 6+ | documented per app |
 | PostgreSQL (Compose → host) | 5433 → 5432 in container |
 | Redis | 6379 |
+
+## Compose profiles
+
+| Command | What starts |
+|---|---|
+| `docker compose up -d` | Postgres + Redis |
+| `docker compose --profile feed up -d --build` | Postgres + Redis + Cached Feed API container |

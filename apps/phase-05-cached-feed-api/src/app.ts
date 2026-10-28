@@ -20,6 +20,8 @@ import {
 import * as authService from "./services/authService.js";
 import * as feedService from "./services/feedService.js";
 import { UnauthorizedError } from "./lib/errors.js";
+import { prisma } from "./lib/prisma.js";
+import { getRedis } from "./lib/redis.js";
 
 export function createApp(logger = createLogger()) {
   const config = getConfig();
@@ -63,8 +65,38 @@ export function createApp(logger = createLogger()) {
     next();
   });
 
+  /** Liveness — process is up (orchestrators / load balancers). */
   app.get("/health", (_req, res) => {
     res.status(200).json({ ok: true, phase: 5, service: "cached-feed-api" });
+  });
+
+  /** Readiness — Postgres + Redis reachable before taking traffic. */
+  app.get("/ready", async (_req, res) => {
+    const checks: Record<string, "ok" | "error"> = {
+      postgres: "error",
+      redis: "error",
+    };
+
+    try {
+      await prisma.$queryRaw`SELECT 1`;
+      checks.postgres = "ok";
+    } catch {
+      checks.postgres = "error";
+    }
+
+    try {
+      const pong = await getRedis().ping();
+      checks.redis = pong === "PONG" ? "ok" : "error";
+    } catch {
+      checks.redis = "error";
+    }
+
+    const ready = checks.postgres === "ok" && checks.redis === "ok";
+    res.status(ready ? 200 : 503).json({
+      ok: ready,
+      checks,
+      service: "cached-feed-api",
+    });
   });
 
   app.get("/", (_req, res) => {
@@ -73,6 +105,7 @@ export function createApp(logger = createLogger()) {
       phase: 5,
       endpoints: {
         health: "GET /health",
+        ready: "GET /ready",
         feed: "GET /feed (public, Redis-cached)",
         auth: "POST /auth/register|login",
         posts: "CRUD /posts (Bearer JWT)",

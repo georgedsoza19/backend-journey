@@ -20,7 +20,7 @@ This repository is built **one phase at a time** — each phase is implemented, 
 | 3 Databases + SQL | Done | [`apps/phase-03-notes-api`](apps/phase-03-notes-api) |
 | 4 Auth + Next.js UI | Done | [`phase-04-secure-notes-api`](apps/phase-04-secure-notes-api) + [`web`](apps/phase-04-secure-notes-web) |
 | 5 Cache, tests, logs | Done | [`phase-05-cached-feed-api`](apps/phase-05-cached-feed-api) + [`web`](apps/phase-05-cached-feed-web) |
-| 6 Docker / CI / deploy | Upcoming | tooling |
+| 6 Docker / CI / deploy | Done | [docs/DEPLOY.md](docs/DEPLOY.md) + Compose `feed` profile |
 | 7 System design | Upcoming | `docs/phases/` |
 | Capstone ForgeBoard | Upcoming | `forgeboard-*` |
 
@@ -88,6 +88,16 @@ pnpm dev:phase-05-api
 # other terminal:
 pnpm dev:phase-05-web
 # open http://localhost:3000 — refresh twice to see cache HIT
+```
+
+### Phase 6 — Docker Compose full stack
+
+```bash
+pnpm docker:feed:up
+# → builds API image, starts postgres + redis + feed-api
+curl http://localhost:3005/health
+curl http://localhost:3005/ready
+# Deploy guide: docs/DEPLOY.md
 ```
 
 ## Monorepo layout

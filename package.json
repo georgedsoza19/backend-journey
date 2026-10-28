@@ -18,6 +18,9 @@
     "db:migrate:phase-05": "pnpm --filter @backend-journey/phase-05-cached-feed-api db:migrate",
     "db:seed:phase-05": "pnpm --filter @backend-journey/phase-05-cached-feed-api db:seed",
     "test:phase-05": "pnpm --filter @backend-journey/phase-05-cached-feed-api test",
+    "docker:feed:build": "docker build -f apps/phase-05-cached-feed-api/Dockerfile -t cached-feed-api:local .",
+    "docker:feed:up": "docker compose --profile feed up -d --build",
+    "docker:feed:down": "docker compose --profile feed down",
     "build": "pnpm -r run build",
     "lint": "pnpm -r run lint --if-present",
     "test": "pnpm -r run test --if-present"
