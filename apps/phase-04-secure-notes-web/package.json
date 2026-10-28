@@ -1,6 +1,25 @@
 {
   "name": "@backend-journey/phase-04-secure-notes-web",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "description": "Placeholder — filled in a later phase"
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@backend-journey/api-client": "workspace:*",
+    "@backend-journey/ui": "workspace:*",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@backend-journey/typescript-config": "workspace:*",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2"
+  }
 }

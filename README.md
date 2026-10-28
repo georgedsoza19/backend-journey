@@ -18,7 +18,7 @@ This repository is built **one phase at a time** — each phase is implemented, 
 | 1 Foundations (CLI + raw HTTP) | Done | [`apps/phase-01-cli-todo`](apps/phase-01-cli-todo) |
 | 2 REST + Express | Done | [`apps/phase-02-taskboard-api`](apps/phase-02-taskboard-api) |
 | 3 Databases + SQL | Done | [`apps/phase-03-notes-api`](apps/phase-03-notes-api) |
-| 4 Auth + Next.js UI | Upcoming | `phase-04-secure-notes-*` |
+| 4 Auth + Next.js UI | Done | [`phase-04-secure-notes-api`](apps/phase-04-secure-notes-api) + [`web`](apps/phase-04-secure-notes-web) |
 | 5 Cache, tests, logs | Upcoming | `phase-05-cached-feed-*` |
 | 6 Docker / CI / deploy | Upcoming | tooling |
 | 7 System design | Upcoming | `docs/phases/` |
@@ -59,6 +59,20 @@ pnpm --filter @backend-journey/phase-03-notes-api db:migrate:deploy
 pnpm db:seed:phase-03
 pnpm dev:phase-03
 # curl "http://localhost:3003/notes?q=prisma"
+```
+
+### Phase 4 — Secure Notes API + Web (ports 3004 / 3000)
+
+```bash
+docker compose up -d postgres
+docker compose exec postgres psql -U postgres -c "CREATE DATABASE secure_notes;" # once
+cp apps/phase-04-secure-notes-api/.env.example apps/phase-04-secure-notes-api/.env
+pnpm --filter @backend-journey/phase-04-secure-notes-api db:migrate:deploy
+pnpm db:seed:phase-04
+pnpm dev:phase-04-api
+# other terminal:
+pnpm dev:phase-04-web
+# open http://localhost:3000  (alice@example.com / Password123!)
 ```
 
 ## Monorepo layout

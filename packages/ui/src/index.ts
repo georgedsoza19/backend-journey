@@ -1,2 +1,3 @@
-/** Shared UI package — components land in Phase 4+. */
-export {};
+export { Button } from "./Button";
+export { Field, Input, TextArea } from "./Input";
+export { Panel, PageShell } from "./Panel";

@@ -1,0 +1,29 @@
+:root {
+  --bj-bg: #0f1c1a;
+  --bj-bg-elevated: #17302b;
+  --bj-surface: #1e3d36;
+  --bj-border: #2f5a4f;
+  --bj-text: #e8f2ef;
+  --bj-muted: #9bb5ad;
+  --bj-accent: #e8a45a;
+  --bj-accent-hover: #f0b872;
+  --bj-danger: #e07a6a;
+  --bj-radius: 12px;
+  --bj-font-display: "Fraunces", Georgia, serif;
+  --bj-font-body: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--bj-text);
+  font-family: var(--bj-font-body);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #24574c 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #3a2e1c 0%, transparent 45%),
+    var(--bj-bg);
+}

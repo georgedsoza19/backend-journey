@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../generated/prisma/client.js";
 import { NotFoundError } from "../lib/errors.js";
 import { prisma } from "../lib/prisma.js";
 

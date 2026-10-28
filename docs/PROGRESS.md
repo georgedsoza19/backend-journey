@@ -31,8 +31,9 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Phase 4 — Auth & first Next.js UI
 
-- [ ] Secure Notes API (JWT, RBAC, ownership)
-- [ ] Next.js App Router + Tailwind web client
+- [x] Secure Notes API (JWT, RBAC, ownership)
+- [x] Next.js App Router web client + shared UI kit
+- [ ] You personally logged in as Alice and Admin and verified ownership / scope=all
 
 ## Phase 5 — Testing, logging, caching
 

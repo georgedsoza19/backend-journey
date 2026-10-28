@@ -9,6 +9,10 @@
     "dev:phase-03": "pnpm --filter @backend-journey/phase-03-notes-api dev",
     "db:migrate:phase-03": "pnpm --filter @backend-journey/phase-03-notes-api db:migrate",
     "db:seed:phase-03": "pnpm --filter @backend-journey/phase-03-notes-api db:seed",
+    "dev:phase-04-api": "pnpm --filter @backend-journey/phase-04-secure-notes-api dev",
+    "dev:phase-04-web": "pnpm --filter @backend-journey/phase-04-secure-notes-web dev",
+    "db:migrate:phase-04": "pnpm --filter @backend-journey/phase-04-secure-notes-api db:migrate",
+    "db:seed:phase-04": "pnpm --filter @backend-journey/phase-04-secure-notes-api db:seed",
     "build": "pnpm -r run build",
     "lint": "pnpm -r run lint --if-present",
     "test": "pnpm -r run test --if-present"
