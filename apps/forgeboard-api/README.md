@@ -1,3 +1,7 @@
-# forgeboard-api
+# ForgeBoard API (capstone)
 
-Placeholder — implemented in a later phase. See [docs/ROADMAP.md](../../docs/ROADMAP.md) and [docs/PROGRESS.md](../../docs/PROGRESS.md).
+Team issue tracker backend — **not implemented yet**.
+
+Design first (Phase 7): [docs/FORGEBOARD_DESIGN.md](../../docs/FORGEBOARD_DESIGN.md)
+
+When you start the capstone, this package becomes Express + Prisma + Redis + JWT, following Phases 3–6 patterns.

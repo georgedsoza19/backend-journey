@@ -1,3 +1,6 @@
-# forgeboard-web
+# ForgeBoard Web (capstone)
 
-Placeholder — implemented in a later phase. See [docs/ROADMAP.md](../../docs/ROADMAP.md) and [docs/PROGRESS.md](../../docs/PROGRESS.md).
+Next.js App Router UI for ForgeBoard — **not implemented yet**.
+
+Design: [docs/FORGEBOARD_DESIGN.md](../../docs/FORGEBOARD_DESIGN.md)  
+Shared UI: `@backend-journey/ui`

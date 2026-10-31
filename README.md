@@ -21,8 +21,8 @@ This repository is built **one phase at a time** — each phase is implemented, 
 | 4 Auth + Next.js UI | Done | [`phase-04-secure-notes-api`](apps/phase-04-secure-notes-api) + [`web`](apps/phase-04-secure-notes-web) |
 | 5 Cache, tests, logs | Done | [`phase-05-cached-feed-api`](apps/phase-05-cached-feed-api) + [`web`](apps/phase-05-cached-feed-web) |
 | 6 Docker / CI / deploy | Done | [docs/DEPLOY.md](docs/DEPLOY.md) + Compose `feed` profile |
-| 7 System design | Upcoming | `docs/phases/` |
-| Capstone ForgeBoard | Upcoming | `forgeboard-*` |
+| 7 System design | Done | [07-system-design](docs/phases/07-system-design.md) · [ForgeBoard design](docs/FORGEBOARD_DESIGN.md) · [Interview prep](docs/INTERVIEW_PREP.md) |
+| Capstone ForgeBoard | Upcoming | `apps/forgeboard-api` + `apps/forgeboard-web` |
 
 Track details in [docs/PROGRESS.md](docs/PROGRESS.md). Full path: [docs/ROADMAP.md](docs/ROADMAP.md).
 
@@ -99,6 +99,14 @@ curl http://localhost:3005/health
 curl http://localhost:3005/ready
 # Deploy guide: docs/DEPLOY.md
 ```
+
+### Phase 7 — System design (docs)
+
+1. Read [docs/FORGEBOARD_DESIGN.md](docs/FORGEBOARD_DESIGN.md)
+2. Close it and redraw the architecture + schema from memory
+3. Practice prompts in [docs/INTERVIEW_PREP.md](docs/INTERVIEW_PREP.md)
+4. Then start the **ForgeBoard** capstone when ready
+
 
 ## Monorepo layout
 

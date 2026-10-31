@@ -51,10 +51,13 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Phase 7 — System design
 
-- [ ] Whiteboard notes for ForgeBoard in `docs/phases/07-system-design.md`
+- [x] Whiteboard notes: `docs/phases/07-system-design.md`
+- [x] ForgeBoard design doc: `docs/FORGEBOARD_DESIGN.md`
+- [x] Interview prep prompts: `docs/INTERVIEW_PREP.md`
+- [ ] You personally redrew ForgeBoard from memory and answered interview prompts out loud
 
 ## Capstone — ForgeBoard
 
-- [ ] API complete
-- [ ] Next.js UI complete
+- [ ] API complete (`apps/forgeboard-api`)
+- [ ] Next.js UI complete (`apps/forgeboard-web`)
 - [ ] Tests, OpenAPI, README polish, live demo

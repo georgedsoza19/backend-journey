@@ -20,8 +20,10 @@ Node.js 22+, TypeScript, Express (from Phase 2), PostgreSQL, Prisma, Zod, Vitest
 | 4 | Auth + first UI | `phase-04-secure-notes-api` + `web` |
 | 5 | Tests, logs, cache | `phase-05-cached-feed-api` + `web` |
 | 6 | Docker, CI/CD, deploy | tooling across apps |
-| 7 | System design | docs + interview prep |
+| 7 | System design | `docs/phases/07-system-design.md`, `FORGEBOARD_DESIGN.md`, `INTERVIEW_PREP.md` |
 | Capstone | ForgeBoard | `forgeboard-api` + `forgeboard-web` |
+
+Phase 7 is **design + interview practice**, not a new runnable app. Capstone implements the design.
 
 ## Project sequence
 
