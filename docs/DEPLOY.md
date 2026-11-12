@@ -1,6 +1,6 @@
-# Deployment guide (Phase 6)
+# Deployment guide (Phase 6 + ForgeBoard)
 
-This repo is set up so the **Cached Feed API** (Phase 5) is the first service you can containerize and deploy. Treat it as the template for ForgeBoard later.
+**Cached Feed API** (Phase 5) and **ForgeBoard API** (capstone) both ship with Dockerfiles and Compose profiles. Use either as a deploy template.
 
 ## Local one-command stack
 
@@ -8,12 +8,17 @@ This repo is set up so the **Cached Feed API** (Phase 5) is the first service yo
 # Infra only
 docker compose up -d
 
-# API + Postgres + Redis
+# Phase 5 API + Postgres + Redis
 docker compose --profile feed up -d --build
 
 curl http://localhost:3005/health
 curl http://localhost:3005/ready
 curl http://localhost:3005/feed
+
+# ForgeBoard API + Postgres + Redis
+docker compose --profile forgeboard up -d --build
+curl http://localhost:3006/health
+curl http://localhost:3006/ready
 ```
 
 If Postgres was created **before** `docker/postgres/init-databases.sql` existed, create DBs once:
@@ -21,12 +26,14 @@ If Postgres was created **before** `docker/postgres/init-databases.sql` existed,
 ```bash
 docker compose exec postgres psql -U postgres -c "CREATE DATABASE cached_feed;"
 docker compose exec postgres psql -U postgres -c "CREATE DATABASE secure_notes;"
+docker compose exec postgres psql -U postgres -c "CREATE DATABASE forgeboard;"
 ```
 
 Stop:
 
 ```bash
 docker compose --profile feed down
+docker compose --profile forgeboard down
 ```
 
 ## 12-factor checklist (this API)
@@ -56,13 +63,22 @@ docker compose --profile feed down
 
 Never commit real secrets. Rotate JWT secrets if leaked.
 
+## ForgeBoard env extras
+
+| Variable | Required | Notes |
+|---|---|---|
+| `ISSUE_CACHE_TTL_SECONDS` | no | Default `30` — issue list cache-aside |
+| `PORT` | no | Default `3006` for ForgeBoard |
+
+Dockerfile path for ForgeBoard: `apps/forgeboard-api/Dockerfile` (context = repo root). Health check: `/ready`.
+
 ## GitHub Actions CI
 
 On every push/PR to `main`:
 
-1. Typecheck all implemented phase packages  
-2. Run Phase 5 integration tests (Postgres + Redis service containers)  
-3. Build the Cached Feed API Docker image (no push by default)
+1. Typecheck all implemented phase packages + ForgeBoard  
+2. Run Phase 5 and ForgeBoard integration tests (Postgres + Redis)  
+3. Build Cached Feed + ForgeBoard API Docker images (no push by default)
 
 See [`.github/workflows/ci.yml`](../.github/workflows/ci.yml).
 
@@ -100,7 +116,7 @@ fly deploy
 
 ## Web UI
 
-The Next.js apps (`phase-04` / `phase-05` web) deploy separately (Vercel/Render static). Point `NEXT_PUBLIC_API_URL` at your API’s public HTTPS URL.
+The Next.js apps (`phase-04` / `phase-05` / `forgeboard-web`) deploy separately (Vercel/Render). Point `NEXT_PUBLIC_API_URL` at your API’s public HTTPS URL.
 
 ## Staging verification checklist
 

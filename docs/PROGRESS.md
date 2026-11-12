@@ -58,6 +58,7 @@ Tick items as you complete each milestone. Update this file in the same commit a
 
 ## Capstone — ForgeBoard
 
-- [ ] API complete (`apps/forgeboard-api`)
-- [ ] Next.js UI complete (`apps/forgeboard-web`)
-- [ ] Tests, OpenAPI, README polish, live demo
+- [x] API complete (`apps/forgeboard-api`)
+- [x] Next.js UI complete (`apps/forgeboard-web`)
+- [x] Tests, OpenAPI, README polish, Docker Compose `forgeboard` profile + CI
+- [ ] You personally ran the live demo (login → create issue → cache HIT)

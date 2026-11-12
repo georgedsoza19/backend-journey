@@ -4,7 +4,11 @@
 # Full Phase 5 stack (Postgres + Redis + API):
 #   docker compose --profile feed up -d --build
 #
+# ForgeBoard API (Postgres + Redis + API):
+#   docker compose --profile forgeboard up -d --build
+#
 # Then: curl http://localhost:3005/health && curl http://localhost:3005/ready
+#   or: curl http://localhost:3006/health && curl http://localhost:3006/ready
 
 services:
   postgres:
@@ -66,6 +70,43 @@ services:
           "node",
           "-e",
           "fetch('http://127.0.0.1:3005/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  forgeboard-api:
+    profiles: ["forgeboard"]
+    build:
+      context: .
+      dockerfile: apps/forgeboard-api/Dockerfile
+    ports:
+      - "3006:3006"
+    environment:
+      NODE_ENV: production
+      PORT: "3006"
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/forgeboard?schema=public
+      REDIS_URL: redis://redis:6379
+      CORS_ORIGIN: http://localhost:3000
+      JWT_ACCESS_SECRET: docker-dev-forgeboard-access-secret-32+
+      JWT_REFRESH_SECRET: docker-dev-forgeboard-refresh-secret-32+
+      JWT_ACCESS_TTL: 15m
+      JWT_REFRESH_TTL: 7d
+      ISSUE_CACHE_TTL_SECONDS: "30"
+      LOG_LEVEL: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3006/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
         ]
       interval: 15s
       timeout: 5s
